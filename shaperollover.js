@@ -1,13 +1,12 @@
-// (function(){
+(function(){
 
   var c = document.createElement('canvas');
   var cx = c.getContext('2d');
   var images = document.querySelectorAll('.rollover');
   var all = images.length;
+  var hideIndex = -all; // stack up layers from the bottom
   var ox = 0;
   var oy = 0;
-
-  var hideIndex = -99;
 
   while (all--) {
     images[all].addEventListener('mouseover', copyimage, false);
@@ -35,15 +34,15 @@
     if (pixelcolour.data[3] === 0) {
       ev.target.classList.remove('over');
       ev.target.style.zIndex = hideIndex;
-      hideIndex++;
+      hideIndex++; // stack new layers on top of abandoned layers
     } else {
       ev.target.classList.add('over');
-      Object.keys(images).forEach((index) => {
-        images[index].style.zIndex = 1;
+      Object.keys(images).forEach((i) => {
+        images[i].style.zIndex = 1;
       });
       ev.target.style.zIndex = 2;
-      hideIndex = -99;
+      hideIndex = -all;
     }
   }
 
-// })();
+})();

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Irregular shape rollover</title>
   <style type="text/css">
+<<<<<<< HEAD
     canvas {border: 1px solid #000;}
     img {
       width: 150px;
@@ -40,5 +41,50 @@
 <img id='img4' src="burning-embers.png" alt="burning embers" class="rollover">
 
 <script src="shaperollover.js"></script>
+=======
+  canvas {border: 1px solid #000;}
+  img {
+    float: left;
+    width: 150px;
+    margin-right: 10px;
+  }
+  img.over {
+    background: green;
+    cursor: pointer;
+  }
+  p img {
+    float: none;
+    clear: both;
+    display: block;
+  }
+  </style>
+</head>
+<body>
+<img src="bottle.png" alt="bottle vapours" class="rollover">
+<img src="burning-embers.png" alt="burning embers" class="rollover">
+<img src="imp.gif" alt="imp" class="rollover">
+<p>
+  <a href="http://christianheilmann.com">
+    <img src="burning-embers.png" alt="burning embers" class="rollover">
+  </a>
+</p>
+
+<script src="shaperollover.js"></script>
+<script>
+
+/* 
+  A quick demo how to detect clicks…
+*/
+var link = document.querySelector('a');
+
+function testinshape(ev) {
+  if (ev.target.className.indexOf(' over') === -1) {
+    ev.preventDefault();
+  }
+}
+link.addEventListener('click',testinshape,false);
+
+</script>
+>>>>>>> 4888b38305d8ed524c6e25491578fef924128c30
 </body>
 </html>
